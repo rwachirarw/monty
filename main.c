@@ -1,5 +1,7 @@
 #include "monty.h"
 
+char *data = NULL;
+
 /**
  * main - starting point of the program
  * @ac: number of arguments passed to main
@@ -9,13 +11,12 @@
 int main(int ac, char **av)
 {
 	FILE *fd;
-	char line[256];
-	char *instruction = NULL, *str_int = NULL;
-	unsigned int i = 0, line_number = 0;
-	instructions_t instruct[] = {
-		{"push", push}, {"pall", pall}, {"NULL", NULL}
+	instruction_t instruct[] = {
+		{"push", push}, {"pall", pall}, {"pint", pint},
+		{"pop", pop}, {"swap", swap}, {"add", add},
+		{"nop", nop},
+		{NULL, NULL}
 	};
-	stack_t *my_stack;
 
 	if (ac != 2)
 	{
@@ -28,20 +29,37 @@ int main(int ac, char **av)
 		dprintf(STDERR_FILENO, "Error: Can't open file %s \n", av[1]);
 		exit(EXIT_FAILURE);
 	}
+	read_line(instruct, fd);
+	fclose(fd);
+	return (0);
+}
+
+/**
+ * read_line - reads the lines in the file
+ * @instruct: a struct of functions
+ * @fd: file descriptor
+ */
+void read_line(instruction_t *instruct, FILE *fd)
+{
+	char *instruction = NULL;
+	unsigned int not_instr, i, line_number = 0;
+	stack_t *head = NULL;
+	char line[256];
+
+
 	while (fgets(line, sizeof(line), fd))
 	{
-		instruction = strtok(line, " \n");
-		i = 0;
-		not_instr = 1;
 		line_number++;
+		i = 0;
+		instruction = strtok(line, " \n\t");
+		not_instr = 1;
 		while (instruct[i].opcode && instruction)
 		{
 			if (strcmp(instruction, instruct[i].opcode) == 0)
 			{
 				not_instr = 0;
-				str_int = strtok(NULL, " \n");
-				data = atoi(str_int);
-				instruct[i].f(&my_stack, line_number);
+				data = strtok(NULL, " \n\t");
+				instruct[i].f(&head, line_number);
 				break;
 			}
 			i++;
@@ -53,7 +71,4 @@ int main(int ac, char **av)
 			exit(EXIT_FAILURE);
 		}
 	}
-	fclose(fd);
-	return (0);
 }
-
