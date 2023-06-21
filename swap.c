@@ -6,14 +6,14 @@
  */
 void swap(stack_t **head, unsigned int line_number)
 {
-	stack_t *tmp;
-	(void) line_number;
+	stack_t *tmp = NULL;
 
 	if (*head == NULL || (*head)->next == NULL)
 	{
-		fprintf(stderr, "L%u: can't swap, stack too short\n", line_number);
+		dprintf(STDERR_FILENO, "L%u: can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
+	tmp 
 	tmp = (*head)->next;
 	(*head)->next = tmp->next;
 	if (tmp->next)
