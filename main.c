@@ -14,7 +14,7 @@ int main(int ac, char **av)
 	instruction_t instruct[] = {
 		{"push", push}, {"pall", pall}, {"pint", pint},
 		{"pop", pop}, {"swap", swap}, {"add", add},
-		{"nop", nop},
+		{"nop", nop}, {"sub", sub},
 		{NULL, NULL}
 	};
 	struct stat sb;
