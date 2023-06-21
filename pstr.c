@@ -19,7 +19,7 @@ void pstr(stack_t **head, unsigned int line_number)
 		if (temp->n > 0 && temp->n < 128)
 			printf("%c", temp->n);
 		else
-			break;
+			return;
 		temp = temp->next;
 	}
 	printf("\n");
