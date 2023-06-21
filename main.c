@@ -20,13 +20,13 @@ int main(int ac, char **av)
 
 	if (ac != 2)
 	{
-		write(STDERR_FILENO, "USAGE: monty file\n", 18);
+		dprintf(STDERR_FILENO, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 	fd = fopen(av[1], "r");
 	if (fd == NULL)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't open file %s \n", av[1]);
+		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", av[1]);
 		exit(EXIT_FAILURE);
 	}
 	read_line(instruct, fd);
@@ -66,7 +66,7 @@ void read_line(instruction_t *instruct, FILE *fd)
 		}
 		if (instruction && not_instr)
 		{
-			dprintf(STDERR_FILENO, "L%u: unknown instruction %s \n",
+			dprintf(STDERR_FILENO, "L%u: unknown instruction %s\n",
 					line_number, instruction);
 			exit(EXIT_FAILURE);
 		}
