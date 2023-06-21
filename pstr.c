@@ -6,13 +6,14 @@
  */
 void pstr(stack_t **head, unsigned int line_number)
 {
-	stack_t *temp = *head;
+	stack_t *temp = NULL;
 
 	(void) line_number;
 
-	if (*head == NULL)
+	if (head == NULL)
 		return;
 
+	temp = *head;
 	while (temp != NULL)
 	{
 		if (temp->n > 0 && temp->n < 128)
