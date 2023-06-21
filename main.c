@@ -15,7 +15,7 @@ int main(int ac, char **av)
 		{"push", push}, {"pall", pall}, {"pint", pint},
 		{"pop", pop}, {"swap", swap}, {"add", add},
 		{"nop", nop}, {"sub", sub}, {"div", div_stack},
-		{"mul", mul}, {"mod", mod},
+		{"mul", mul}, {"mod", mod}, {"pchar", pchar},
 		{NULL, NULL}
 	};
 	struct stat sb;
@@ -62,8 +62,8 @@ void read_line(instruction_t *instruct, FILE *fd)
 		i = 0;
 		instruction = strtok(line, " \n\t");
 		not_instr = 1;
-		if (*instruction == '#')
-			continue;
+		/* if (*instruction == '#') */
+			/* continue; */
 		while (instruct[i].opcode && instruction)
 		{
 			if (strcmp(instruction, instruct[i].opcode) == 0)

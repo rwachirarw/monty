@@ -1,7 +1,10 @@
 push 10
-#  push 35
-push 10
-pall
-pop
-mod
+pchar
+push 35
+pchar
+push 100
+pchar
+push 0
+pchar
+push 127
 pall
