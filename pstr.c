@@ -16,10 +16,10 @@ void pstr(stack_t **head, unsigned int line_number)
 	temp = *head;
 	while (temp != NULL)
 	{
-		if (temp->n > 0 && temp->n < 128)
+		if (temp->n > 31 && temp->n < 128)
 			printf("%c", temp->n);
 		else
-			return;
+			break;
 		temp = temp->next;
 	}
 	printf("\n");
