@@ -17,12 +17,14 @@ void push(stack_t **head, unsigned int line_number)
 	}
 	while (data[i] != '\0')
 	{
-		if (!isdigit(data[i]))
-		{
-			dprintf(STDERR_FILENO, "L%u: usage: push integer\n", line_number);
-			exit(EXIT_FAILURE);
-		}
-		i++;
+		/**
+		 * if (!isdigit(data[i]))
+		* {
+		*	dprintf(STDERR_FILENO, "L%u: usage: push integer\n", line_number);
+		*	exit(EXIT_FAILURE);
+		* }
+		* i++;
+		*/
 	}
 	m = atoi(data);
 	new_node = malloc(sizeof(stack_t));
@@ -39,7 +41,6 @@ void push(stack_t **head, unsigned int line_number)
 		*head = new_node;
 		return;
 	}
-
 	if ((*head)->prev == NULL)
 	{
 		new_node->next = *head;
