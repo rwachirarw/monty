@@ -17,14 +17,17 @@ void push(stack_t **head, unsigned int line_number)
 	}
 	while (input.data[i] != '\0')
 	{
-		if (!isdigit(input.data[i]))
+		if (!isdigit(input.data[i]) &&
+				(input.data[i] != '-' && input.data[i] != '+'))
 		{
 			dprintf(STDERR_FILENO, "L%u: usage: push integer\n", line_number);
 			exit(EXIT_FAILURE);
 		}
 		i++;
 	}
+	printf("input.data = %s\n", input.data);
 	m = atoi(input.data);
+	printf("input.data = %s, m = %d\n", input.data, m);
 	new_node = malloc(sizeof(stack_t));
 	if (new_node == NULL)
 	{
