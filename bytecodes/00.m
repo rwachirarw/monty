@@ -1,6 +1,6 @@
 push 23
+push 33
 push 43
-push 63
-push 83
-rotl
+push 53
+rotr
 pall
