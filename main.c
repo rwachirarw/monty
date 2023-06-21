@@ -63,8 +63,8 @@ void read_line(instruction_t *instruct, FILE *fd)
 		i = 0;
 		instruction = strtok(line, " \n\t");
 		not_instr = 1;
-		if (*instruction == '#')
-			nop(&head, line_number);
+		if (instruction  && *instruction == '#')
+			continue;
 		while (instruct[i].opcode && instruction)
 		{
 			if (strcmp(instruction, instruct[i].opcode) == 0)
