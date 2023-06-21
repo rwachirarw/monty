@@ -25,9 +25,7 @@ void push(stack_t **head, unsigned int line_number)
 		}
 		i++;
 	}
-	printf("input.data = %s\n", input.data);
 	m = atoi(input.data);
-	printf("input.data = %s, m = %d\n", input.data, m);
 	new_node = malloc(sizeof(stack_t));
 	if (new_node == NULL)
 	{
