@@ -13,7 +13,6 @@ void swap(stack_t **head, unsigned int line_number)
 		dprintf(STDERR_FILENO, "L%u: can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	tmp 
 	tmp = (*head)->next;
 	(*head)->next = tmp->next;
 	if (tmp->next)

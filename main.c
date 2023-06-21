@@ -71,4 +71,5 @@ void read_line(instruction_t *instruct, FILE *fd)
 			exit(EXIT_FAILURE);
 		}
 	}
+	free_stack(&head);
 }

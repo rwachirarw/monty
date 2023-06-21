@@ -1,7 +1,10 @@
 push 23
-push 34
-push 57
-nop
-pall
+push 54
+swap
 swap
 pall
+nop
+pop
+push 75
+pall
+
