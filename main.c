@@ -26,7 +26,7 @@ int main(int ac, char **av)
 	}
 
 	stat(av[1], &sb);
-	if (!(S_ISREG(sb.st_mode)))
+	if (!(S_ISREG(sb.st_mode)) || access(av[1], R_OK) == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", av[1]);
 		exit(EXIT_FAILURE);
