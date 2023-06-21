@@ -15,6 +15,7 @@ int main(int ac, char **av)
 		{"push", push}, {"pall", pall}, {"pint", pint},
 		{"pop", pop}, {"swap", swap}, {"add", add},
 		{"nop", nop}, {"sub", sub}, {"div", div_stack},
+		{"mul", mul},
 		{NULL, NULL}
 	};
 	struct stat sb;
