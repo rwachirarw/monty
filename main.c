@@ -1,6 +1,6 @@
 #include "monty.h"
 
-char *data = NULL;
+inputs_t input = {NULL, NULL, NULL, 1};
 
 /**
  * main - starting point of the program
@@ -17,6 +17,7 @@ int main(int ac, char **av)
 		{"nop", nop}, {"sub", sub}, {"div", div_stack},
 		{"mul", mul}, {"mod", mod}, {"pchar", pchar},
 		{"pstr", pstr}, {"rotl", rotl}, {"rotr", rotr},
+		{"queue", queue}, {"stack", stack},
 		{NULL, NULL}
 	};
 	struct stat sb;
@@ -56,7 +57,6 @@ void read_line(instruction_t *instruct, FILE *fd)
 	stack_t *head = NULL;
 	char line[256];
 
-
 	while (fgets(line, sizeof(line), fd))
 	{
 		line_number++;
@@ -70,7 +70,7 @@ void read_line(instruction_t *instruct, FILE *fd)
 			if (strcmp(instruction, instruct[i].opcode) == 0)
 			{
 				not_instr = 0;
-				data = strtok(NULL, " \n\t");
+				input.data = strtok(NULL, " \n\t");
 				instruct[i].f(&head, line_number);
 				break;
 			}

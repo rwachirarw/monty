@@ -39,8 +39,27 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-extern char *data;
+/**
+ * struct inputs_s - contains inputs of the functions
+ * @top: pointer to head of the stack
+ * @tail: pointer to the tail of the stack
+ * @data: operand of the instruction
+ * @flag: checks on the operation mode
+ *
+ * for stack, queues, LIFO, FIFO
+ */
+typedef struct inputs_s
+{
+	stack_t *top;
+	stack_t *tail;
+	char *data;
+	int flag;		/* 1 for stack, 0 for queue mode */
+} inputs_t;
+
+extern inputs_t input;
+
 void read_line(instruction_t *instruct, FILE *fd);
+
 /* stack functions implementation */
 void push(stack_t **head, unsigned int line_number);
 void pall(stack_t **head, unsigned int line_number);
@@ -58,5 +77,9 @@ void pchar(stack_t **head, unsigned int line_number);
 void pstr(stack_t **head, unsigned int line_number);
 void rotl(stack_t **head, unsigned int line_number);
 void rotr(stack_t **head, unsigned int line_number);
+void queue(stack_t **head, unsigned int line_number);
+void stack(stack_t **head, unsigned int line_number);
+void add_node_top(stack_t **head, stack_t *node);
+void add_node_end(stack_t **head, stack_t *node);
 
 #endif	/* MONNTY_H_INCLUDED */

@@ -1,6 +1,20 @@
-push 23
-push 33
-push 43
-push 53
-rotr
+queue
+push 1
+push 2
+push 3
+pall
+stack
+push 4
+push 5
+push 6
+pall
+add
+pall
+queue
+push 11111
+pall
+add
+pall
+pop
+pop
 pall
