@@ -112,6 +112,7 @@ and any additional text after the opcode or its required argument is not taken i
 	. swap.c - swaps the top two elements of the stack
 	. add.c - adds the top two elements of the stack
 	. nop.c - does not do anything.
+	. sub.c - subtracts top elements from second top element of the stack
 
 ## Authors
 
